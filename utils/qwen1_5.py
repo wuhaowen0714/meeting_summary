@@ -262,7 +262,6 @@ class Qwen1_5:
     def chat_stream(self, messages):
         text = self.tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
         tokens = self.tokenizer(text).input_ids
-        print(text)
         token = self.forward_first(tokens)
         full_word_tokens = []
         while token != self.EOS and self.token_length < self.SEQLEN:
